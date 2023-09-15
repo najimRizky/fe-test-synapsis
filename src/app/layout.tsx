@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunito.className} bg-body-bg text-body-text`}>
         <Header />
-        <main>
+        <main className='my-8'>
           {children}
         </main>
         <Footer />
