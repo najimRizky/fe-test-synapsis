@@ -1,5 +1,6 @@
 "use client"
 
+import { createQueryString } from '@/helper/url'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useState } from 'react'
 
@@ -19,15 +20,14 @@ const SearchInput = () => {
       return
     }
 
-    router.push('/search?' + createQueryString('q', search))
+    const queryString = createQueryString({
+      name: 'q',
+      value: search,
+      searchParams: searchParams
+    })
+
+    router.push(`/search?${queryString}`)
   }
-
-  const createQueryString = useCallback((name: string, value: string) => {
-    const params = new URLSearchParams(searchParams)
-    params.set(name, value)
-
-    return params.toString()
-  }, [searchParams])
 
   return (
     <div>
