@@ -39,9 +39,9 @@ const apiRequest = async (params: IApiRequest) => {
   
   const data = await res.json()
   const metadata = {
-    maxPage: res.headers.get("x-pagination-pages"),
-    totalElement: res.headers.get("x-pagination-total"),
-    page: res.headers.get("x-pagination-page"),
+    maxPage: Number(res.headers.get("x-pagination-pages")) || 1,
+    totalElement: Number(res.headers.get("x-pagination-total")) || 0,
+    page: Number(res.headers.get("x-pagination-page")) || 1
   }
 
   const response = {
