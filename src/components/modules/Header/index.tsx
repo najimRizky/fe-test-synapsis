@@ -27,8 +27,9 @@ const Header = () => {
                 href={link.path}
                 key={link.path}
                 className={`
-                  text-sm font-bold px-4 h-full flex items-center
-                  ${pathName === link.path ? 'bg-teal-500 text-white' : ''}
+                  text-sm font-bold px-4 h-full flex items-center hover:bg-teal-100
+                  duration-300
+                  ${pathName === link.path ? 'bg-teal-500 text-white hover:bg-teal-500' : ''}
                 `}
               >
                 {link.name}
