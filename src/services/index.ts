@@ -28,14 +28,29 @@ const apiRequest = async (params: IApiRequest) => {
 
   if (!res.ok) {
     return {
+      data: null,
+      metadata: null,
       error: {
         message: res.statusText,
         status: res.status
       }
     }
   }
+  
+  const data = await res.json()
+  const metadata = {
+    maxPage: res.headers.get("x-pagination-pages"),
+    totalElement: res.headers.get("x-pagination-total"),
+    page: res.headers.get("x-pagination-page"),
+  }
 
-  return await res.json()
+  const response = {
+    data,
+    metadata,
+    error: null
+  }
+
+  return response
 }
 
 export default apiRequest

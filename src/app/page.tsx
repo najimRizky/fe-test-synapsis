@@ -18,14 +18,14 @@ const HomePage = async () => {
             title="Posts"
             description="Explore a treasure trove of articles, stories, and insights in our post list section, where knowledge and inspiration converge."
           />
-          <PostList posts={posts} />
+          <PostList posts={posts?.data} />
         </div>
         <div className="mt-16">
           <SectionTitle
             title="Users"
             description="See the list of users who have contributed to the S-BLOG project."
           />
-          <UserListHorizontalScroll users={users} />
+          <UserListHorizontalScroll users={users?.data} />
         </div>
       </div>
     </div>
