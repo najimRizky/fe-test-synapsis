@@ -1,4 +1,4 @@
-import { IApiRequest, IGetRequest } from "./interface";
+import { IApiRequest, IDeleteRequest, IGetRequest, IPatchRequest, IPostRequest } from "./interface";
 
 const API_URL = process.env.API_URL
 const API_KEY = process.env.API_KEY
@@ -44,14 +44,14 @@ export const getRequest = async ({ url, serverSide }: IGetRequest) => {
   return await apiRequest({ url, serverSide })
 }
 
-export const postRequest = async (url: string, body: any) => {
+export const postRequest = async ({ url, body }: IPostRequest) => {
   return await apiRequest({ url, body, method: "POST" })
 }
 
-export const patchRequest = async (url: string, body: any) => {
+export const patchRequest = async ({ url, body }: IPatchRequest) => {
   return await apiRequest({ url, body, method: "PATCH" })
 }
 
-export const deleteRequest = async (url: string) => {
+export const deleteRequest = async ({ url }: IDeleteRequest) => {
   return await apiRequest({ url, method: "DELETE" })
 }
