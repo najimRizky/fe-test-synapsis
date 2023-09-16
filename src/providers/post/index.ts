@@ -27,3 +27,23 @@ export const getPostList = async (page: number = 1) => {
     metadata: posts?.metadata
   }
 }
+
+export const getPostById = async (id: number) => {
+  const post: any = await getRequest({ url: `${apiPath.posts}/${id}` })
+
+  if (!post?.data) return post;
+
+  const user: any = await getUserById(post?.data?.user_id);
+
+  return {
+    data: {
+      ...post?.data,
+      user: user?.data
+    },
+    metadata: post?.metadata
+  }
+}
+
+export const getCommentsByPostId = async (id: number, page: number = 1) => {
+  return await getRequest({ url: `${apiPath.posts}/${id}/comments?page=${page}`, serverSide: false })
+}
