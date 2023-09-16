@@ -1,15 +1,16 @@
 "use client"
 
 import { createQueryString } from "@/helper/url"
-import { useSearchParams, useRouter } from "next/navigation"
+import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import IPagination from "./interface"
 import { thousandSeparator } from "@/helper/number"
 
 const perPage = 10
 
-const Pagination = ({ maxPage, page, totalElement }: IPagination) => {
+const Pagination = ({ maxPage, page, totalElement = 0 }: IPagination) => {
   const searchParams = useSearchParams()
   const router = useRouter()
+  const pathname = usePathname()
 
   const showStart = page * perPage - perPage + 1
   const showEnd = page * perPage > totalElement ? totalElement : page * perPage
@@ -21,7 +22,7 @@ const Pagination = ({ maxPage, page, totalElement }: IPagination) => {
       value: page - 1,
       searchParams: searchParams
     })
-    router.push(`/post?${queryString}`)
+    router.push(`${pathname}?${queryString}`)
   }
 
   const handleNext = () => {
@@ -31,7 +32,7 @@ const Pagination = ({ maxPage, page, totalElement }: IPagination) => {
       value: page + 1,
       searchParams: searchParams
     })
-    router.push(`/post?${queryString}`)
+    router.push(`${pathname}?${queryString}`)
   }
 
   return (
