@@ -19,6 +19,7 @@ const HomePage = async () => {
           <SectionTitle
             title="Posts"
             description="Explore a treasure trove of articles, stories, and insights in our post list section, where knowledge and inspiration converge."
+            href="/post"
           />
           <PostList posts={posts?.data} />
           <Link
@@ -32,6 +33,7 @@ const HomePage = async () => {
           <SectionTitle
             title="Users"
             description="See the list of users who have contributed to the S-BLOG project."
+            href="/user"
           />
           <UserListHorizontalScroll users={users?.data} />
         </div>
