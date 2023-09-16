@@ -7,7 +7,7 @@ import MailIcon from '@/components/icons/MailIcon'
 const UserCard = ({ user }: IUserCard ) => {
   return (
     <Link
-      href={`/users/${user.id}`}
+      href={`/user/${user.id}`}
       className="min-w-[14rem] h-32 shadow-sm cursor-pointer p-2 py-4 space-y-1 hover:shadow-lg duration-300 border-2 rounded-md"
     >
       <div className="flex gap-2 items-start font-bold  ">
