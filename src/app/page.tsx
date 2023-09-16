@@ -4,11 +4,13 @@ import { getPostList } from "@/providers/post"
 import Banner from "@/components/pages/home/Banner"
 import UserListHorizontalScroll from "@/components/pages/home/UserListHorizontalScroll"
 import { getUserList } from "@/providers/user"
+import Link from "next/link"
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon"
 
 const HomePage = async () => {
   const posts = await getPostList()
   const users = await getUserList()
-  
+
   return (
     <div>
       <Banner />
@@ -19,6 +21,12 @@ const HomePage = async () => {
             description="Explore a treasure trove of articles, stories, and insights in our post list section, where knowledge and inspiration converge."
           />
           <PostList posts={posts?.data} />
+          <Link
+            href="/post"
+            className="w-fit mx-auto flex items-center whitespace-nowrap hover:underline text-xl"
+          >
+            More Posts &nbsp; <ArrowRightIcon width={20} />
+          </Link>
         </div>
         <div className="mt-16">
           <SectionTitle
