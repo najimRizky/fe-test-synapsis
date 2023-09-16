@@ -4,6 +4,7 @@ import { createQueryString } from "@/helper/url"
 import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import IPagination from "./interface"
 import { thousandSeparator } from "@/helper/number"
+import Button from "../Button"
 
 const perPage = 10
 
@@ -45,24 +46,22 @@ const Pagination = ({ maxPage, page, totalElement = 0, customHandler }: IPaginat
         Showing <b>{thousandSeparator(showStart)}</b> to <b>{thousandSeparator(showEnd)}</b>  of <b>{thousandSeparator(totalElement)}</b> data
       </div>
       <div className="flex items-center gap-x-2 ">
-        <button
-          className={`
-          bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-2 px-8 rounded-l duration-300 
-          ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}
-        `}
+        <Button
           onClick={handlePrev}
+          disabled={page === 1}
+          bgColor="bg-gray-200"
+          color="text-gray-600"
         >
           Prev
-        </button>
-        <button
-          className={`
-          bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-2 px-8 rounded-r duration-300
-          ${page === maxPage ? 'opacity-50 cursor-not-allowed' : ''}
-        `}
+        </Button>
+        <Button
           onClick={handleNext}
+          disabled={page === maxPage}
+          bgColor="bg-gray-200"
+          color="text-gray-600"
         >
           Next
-        </button>
+        </Button>
       </div>
     </div>
   )
