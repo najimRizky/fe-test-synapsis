@@ -4,7 +4,7 @@ import { createQueryString } from "@/helper/url"
 import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import IPagination from "./interface"
 import { thousandSeparator } from "@/helper/number"
-import Button from "../Button"
+import Button from "@/components/base/Button"
 
 const perPage = 10
 

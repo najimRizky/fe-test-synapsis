@@ -7,11 +7,10 @@ const Button = (props: IButton) => {
     type,
     children,
     onClick,
-    otherProps,
     bgColor,
     color,
     disabled,
-    width = "5rem"
+    width = "5rem",
   } = props
   return (
     <button
@@ -28,7 +27,6 @@ const Button = (props: IButton) => {
       `}
       {...(type ? { type: type } : {})}
       {...(disabled !== undefined ? { disabled: disabled } : {})}
-      {...otherProps}
     >
       {children}
     </button>
