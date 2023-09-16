@@ -8,8 +8,8 @@ import Link from "next/link"
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon"
 
 const HomePage = async () => {
-  const posts = await getPostList()
-  const users = await getUserList()
+  const posts = await getPostList({})
+  const users = await getUserList({})
 
   return (
     <div>
