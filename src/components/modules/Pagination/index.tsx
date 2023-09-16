@@ -7,7 +7,7 @@ import { thousandSeparator } from "@/helper/number"
 
 const perPage = 10
 
-const Pagination = ({ maxPage, page, totalElement = 0 }: IPagination) => {
+const Pagination = ({ maxPage, page, totalElement = 0, customHandler }: IPagination) => {
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
@@ -17,6 +17,8 @@ const Pagination = ({ maxPage, page, totalElement = 0 }: IPagination) => {
 
   const handlePrev = () => {
     if (page === 1) return
+    if (customHandler?.previous) return customHandler.previous()
+
     const queryString = createQueryString({
       name: 'page',
       value: page - 1,
@@ -27,6 +29,8 @@ const Pagination = ({ maxPage, page, totalElement = 0 }: IPagination) => {
 
   const handleNext = () => {
     if (page === maxPage) return
+    if (customHandler?.next) return customHandler.next()
+
     const queryString = createQueryString({
       name: 'page',
       value: page + 1,
@@ -36,7 +40,7 @@ const Pagination = ({ maxPage, page, totalElement = 0 }: IPagination) => {
   }
 
   return (
-    <div className="flex justify-between mt-8 items-center">
+    <div className="flex justify-between mt-4 items-center">
       <div className="text-gray-600">
         Showing <b>{thousandSeparator(showStart)}</b> to <b>{thousandSeparator(showEnd)}</b>  of <b>{thousandSeparator(totalElement)}</b> data
       </div>

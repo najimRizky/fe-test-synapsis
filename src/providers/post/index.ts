@@ -28,6 +28,10 @@ export const getPostList = async (page: number = 1) => {
   }
 }
 
+export const getPostListByUserId = async (userId: number, page: number = 1) => {
+  return await getRequest({ url: `${apiPath.users}/${userId}/posts?page=${page}`, serverSide: false})
+}
+
 export const getPostById = async (id: number) => {
   const post: any = await getRequest({ url: `${apiPath.posts}/${id}` })
 
