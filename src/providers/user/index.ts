@@ -1,8 +1,11 @@
 import apiPath from "@/config/apiPath"
 import { getRequest } from "@/services"
+import { IGetUserList } from "./interface"
 
-export const getUserList = async (page: number = 1) => {
-  const users = await getRequest({ url: `${apiPath.users}?page=${page}` })
+export const getUserList = async ({ page = 1, query }: IGetUserList) => {
+  const queryString = query ? `&name=${query}` : '';
+
+  const users = await getRequest({ url: `${apiPath.users}?page=${page}${queryString}` })
   return users
 }
 
