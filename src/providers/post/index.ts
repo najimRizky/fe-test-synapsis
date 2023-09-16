@@ -3,9 +3,12 @@ import IPost from "@/interfaces/post";
 import { getRequest } from "@/services"
 import { getUserById } from "../user";
 import IUser from "@/interfaces/user";
+import { IGetPostList } from "./interface";
 
-export const getPostList = async (page: number = 1) => {
-  const posts: any = await getRequest({ url: `${apiPath.posts}?page=${page}` })
+export const getPostList = async ({ page = 1, query }: IGetPostList) => {
+  const queryString = query ? `&title=${query}` : '';
+
+  const posts: any = await getRequest({ url: `${apiPath.posts}?page=${page}${queryString}` });
   const uniqueUserIds: number[] = Array.from(new Set(posts?.data?.map((post: IPost) => post.user_id)));
 
   const userPromises = uniqueUserIds.map((id: number) => getUserById(id));
@@ -29,7 +32,7 @@ export const getPostList = async (page: number = 1) => {
 }
 
 export const getPostListByUserId = async (userId: number, page: number = 1) => {
-  return await getRequest({ url: `${apiPath.users}/${userId}/posts?page=${page}`, serverSide: false})
+  return await getRequest({ url: `${apiPath.users}/${userId}/posts?page=${page}`, serverSide: false })
 }
 
 export const getPostById = async (id: number) => {
