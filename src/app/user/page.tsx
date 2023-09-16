@@ -31,7 +31,10 @@ const UserPage = async ({ searchParams }: IUserPage) => {
       ) : (
         <>
           <div className="flex justify-between">
-            <SectionTitle title={`Page ${page}`} />
+            <SectionTitle 
+              title={`Page ${page}`} 
+              size='small' 
+            />
             <AddUser />
           </div>
           <div className="grid grid-cols-4 gap-8">

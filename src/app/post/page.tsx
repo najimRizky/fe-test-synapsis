@@ -26,7 +26,10 @@ const PostPage = async ({ searchParams }: IPostPage) => {
         </div>
       ) : (
         <>
-          <SectionTitle title={`Page ${page}`} />
+          <SectionTitle
+            title={`Page ${page}`}
+            size="small"
+          />
           <PostList posts={posts.data} />
           <Pagination
             page={page}

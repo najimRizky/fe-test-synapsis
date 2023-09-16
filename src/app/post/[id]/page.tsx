@@ -49,6 +49,7 @@ const PostDetailPage = async ({ params }: IPostDetailPage) => {
       <p className="mt-4 text-gray-500 mb-8">{data?.body}</p>
       <SectionTitle
         title="Comments"
+        size="small"
       />
       <PostCommens id={id} />
     </div>

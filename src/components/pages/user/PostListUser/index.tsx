@@ -35,7 +35,10 @@ const PostLisUser = ({ user }: IPostListUser) => {
 
   return (
     <div className="mt-8">
-      <SectionTitle title={`${user?.name}'s Posts`} />
+      <SectionTitle
+        title={`${user?.name}'s Posts`}
+        size="small"
+      />
 
       {loading ? <Spinner /> :
         posts?.data?.length === 0 ? <p>No posts</p> : (
