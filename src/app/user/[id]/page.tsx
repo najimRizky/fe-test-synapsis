@@ -1,6 +1,6 @@
 import DeleteUser from "@/components/pages/user/DeleteUser"
 import EditUser from "@/components/pages/user/EditUser"
-import PostLisUser from "@/components/pages/user/PostListUser"
+import PostListUser from "@/components/pages/user/PostListUser"
 import UserDetail from "@/components/pages/user/UserDetail"
 import { getUserById } from "@/providers/user"
 import { Metadata, ResolvingMetadata } from "next"
@@ -42,7 +42,7 @@ const UserDetailPage = async ({ params }: IUserDetailPage) => {
       </div>
 
       <div className="mt-8">
-        <PostLisUser user={data} />
+        <PostListUser user={data} />
       </div>
     </div>
   )

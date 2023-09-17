@@ -9,7 +9,7 @@ import Pagination from "@/components/modules/Pagination"
 import Spinner from "@/components/modules/Spinner"
 
 
-const PostLisUser = ({ user }: IPostListUser) => {
+const PostListUser = ({ user }: IPostListUser) => {
   const [page, setPage] = useState(1)
   const [posts, setPosts] = useState<{ data: any, metadata: any }>()
   const [loading, setLoading] = useState(true)
@@ -60,4 +60,4 @@ const PostLisUser = ({ user }: IPostListUser) => {
   )
 }
 
-export default PostLisUser
+export default PostListUser
