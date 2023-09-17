@@ -1,3 +1,4 @@
+import DeleteUser from "@/components/pages/user/DeleteUser"
 import EditUser from "@/components/pages/user/EditUser"
 import PostLisUser from "@/components/pages/user/PostListUser"
 import UserDetail from "@/components/pages/user/UserDetail"
@@ -34,7 +35,10 @@ const UserDetailPage = async ({ params }: IUserDetailPage) => {
     <div className="container">
       <div className="flex justify-between">
         <UserDetail user={data} />
-        <EditUser user={data} />
+        <div className="flex gap-2">
+          <EditUser user={data} />
+          <DeleteUser id={id} />
+        </div>
       </div>
 
       <div className="mt-8">

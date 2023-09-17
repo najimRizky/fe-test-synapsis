@@ -38,7 +38,15 @@ const apiRequest = async (params: IApiRequest) => {
     }
   }
   
-  const data = await res.json()
+  if (res.status === 204) { // No Content
+    return {
+      data: null,
+      metadata: null,
+      error: null
+    }
+  }
+  
+  const data = await res?.json()
   const metadata = {
     maxPage: Number(res.headers.get("x-pagination-pages")) || 1,
     totalElement: Number(res.headers.get("x-pagination-total")) || 0,

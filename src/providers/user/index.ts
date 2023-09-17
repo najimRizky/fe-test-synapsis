@@ -1,5 +1,5 @@
 import apiPath from "@/config/apiPath"
-import { getRequest, patchRequest, postRequest } from "@/services"
+import { deleteRequest, getRequest, patchRequest, postRequest } from "@/services"
 import { IGetUserList } from "./interface"
 
 export const getUserList = async ({ page = 1, query }: IGetUserList) => {
@@ -21,5 +21,10 @@ export const createUser = async (data: any) => {
 
 export const updateUser = async (id: number, data: any) => {
   const user = await patchRequest({ url: `${apiPath.users}/${id}`, body: data })
+  return user
+}
+
+export const deleteUser = async (id: number) => {
+  const user = await deleteRequest({ url: `${apiPath.users}/${id}` })
   return user
 }
