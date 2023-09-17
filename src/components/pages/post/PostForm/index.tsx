@@ -81,7 +81,7 @@ const PostForm = ({ data, onClose, userId, reloadMethod }: IPostForm) => {
         rows={5}
       />
       <div className="flex justify-end gap-x-2">
-        <Button disabled={loading} type='button' onClick={onClose}>
+        <Button disabled={loading} bgColor='bg-gray-200' color='text-body-text' type='button' onClick={onClose}>
           Cancel
         </Button>
         <Button disabled={loading} type="submit">
