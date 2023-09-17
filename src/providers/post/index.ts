@@ -3,9 +3,8 @@ import IPost from "@/interfaces/post";
 import { deleteRequest, getRequest, patchRequest, postRequest } from "@/services"
 import { getUserById } from "../user";
 import IUser from "@/interfaces/user";
-import { IGetPostList } from "./interface";
 
-export const getPostList = async ({ page = 1, query }: IGetPostList) => {
+export const getPostList = async (page: number = 1, query: string = "") => {
   const queryString = query ? `&title=${query}` : '';
 
   const posts: any = await getRequest({ url: `${apiPath.posts}?page=${page}${queryString}` });

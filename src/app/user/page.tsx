@@ -15,7 +15,7 @@ interface IUserPage {
 const UserPage = async ({ searchParams }: IUserPage) => {
   const page = Number(searchParams.page) || 1
   const search = searchParams.q || ""
-  const users = await getUserList({ page, query: search })
+  const users = await getUserList(page, search)
 
   return (
     <div className="container">
@@ -31,9 +31,9 @@ const UserPage = async ({ searchParams }: IUserPage) => {
       ) : (
         <>
           <div className="flex justify-between">
-            <SectionTitle 
-              title={`Page ${page}`} 
-              size='small' 
+            <SectionTitle
+              title={`Page ${page}`}
+              size='small'
             />
             <AddUser />
           </div>

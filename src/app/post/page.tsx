@@ -12,7 +12,7 @@ interface IPostPage {
 const PostPage = async ({ searchParams }: IPostPage) => {
   const page = Number(searchParams.page) || 1
   const search = searchParams.q || ""
-  const posts = await getPostList({ page, query: search })
+  const posts = await getPostList(page, search)
   return (
     <div className="container">
       <PageTitle
