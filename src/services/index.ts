@@ -21,6 +21,7 @@ const apiRequest = async (params: IApiRequest) => {
     headers: {
       ...headers,
       Authorization: `Bearer ${API_KEY}`,
+      "Content-Type": "application/json"
     },
     body: ["POST", "PATCH"].includes(method) ? JSON.stringify(body) : undefined,
     next: nextOptions
@@ -60,13 +61,13 @@ export const getRequest = async ({ url, serverSide }: IGetRequest) => {
 }
 
 export const postRequest = async ({ url, body }: IPostRequest) => {
-  return await apiRequest({ url, body, method: "POST" })
+  return await apiRequest({ url, body, method: "POST", serverSide: false })
 }
 
 export const patchRequest = async ({ url, body }: IPatchRequest) => {
-  return await apiRequest({ url, body, method: "PATCH" })
+  return await apiRequest({ url, body, method: "PATCH", serverSide: false })
 }
 
 export const deleteRequest = async ({ url }: IDeleteRequest) => {
-  return await apiRequest({ url, method: "DELETE" })
+  return await apiRequest({ url, method: "DELETE", serverSide: false })
 }
