@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react'
+import React from 'react'
 import IInput from './interface'
 
 const Input = (props: IInput) => {
@@ -8,7 +8,11 @@ const Input = (props: IInput) => {
     iconPosition = "left",
     placeholder,
     value,
+    name,
+    type = "text",
     onChange,
+    required,
+    id,
   } = props
   return (
     <div className={`relative ${className}`}>
@@ -18,6 +22,10 @@ const Input = (props: IInput) => {
         </div>
       )}
       <input
+        {...name && { name }}
+        {...required && { required }}
+        {...id && { id }}
+        type={type}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
