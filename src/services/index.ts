@@ -9,7 +9,7 @@ const apiRequest = async (params: IApiRequest) => {
     body = {},
     method = "GET",
     headers = {},
-    cache = "default",
+    cache = "no-cache",
     nextOptions = {},
     serverSide = true
   } = params

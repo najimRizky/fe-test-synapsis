@@ -1,3 +1,4 @@
+import EditUser from "@/components/pages/user/EditUser"
 import PostLisUser from "@/components/pages/user/PostListUser"
 import UserDetail from "@/components/pages/user/UserDetail"
 import { getUserById } from "@/providers/user"
@@ -31,7 +32,10 @@ const UserDetailPage = async ({ params }: IUserDetailPage) => {
 
   return (
     <div className="container">
-      <UserDetail user={data} />
+      <div className="flex justify-between">
+        <UserDetail user={data} />
+        <EditUser user={data} />
+      </div>
 
       <div className="mt-8">
         <PostLisUser user={data} />

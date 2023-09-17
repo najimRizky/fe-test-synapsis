@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserDetail = ({ user }: any) => {
   return (
-    <>
+    <div>
       <h1 className="text-3xl font-bold">{user?.name}</h1>
       <div className="flex gap-4">
         <div>
@@ -17,7 +17,7 @@ const UserDetail = ({ user }: any) => {
           </p>
         </div>
         <div >
-          <p className="capitalize">
+          <p>
             : {user?.email}
           </p>
           <p className="capitalize">
@@ -28,7 +28,7 @@ const UserDetail = ({ user }: any) => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

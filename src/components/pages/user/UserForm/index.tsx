@@ -2,29 +2,33 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import IUserForm from './interface'
 import FormControl from '@/components/modules/FormControl'
 import Button from '@/components/base/Button'
-import { createUser } from '@/providers/user'
+import { createUser, updateUser } from '@/providers/user'
 import Alert from '@/components/base/Alert'
+import { useRouter } from 'next/navigation'
 
 const UserForm = ({ data, onClose }: IUserForm) => {
+  const router = useRouter()
+
   const [formData, setFormData] = useState({ ...data })
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value} = e.target
+    const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const res = await createUser(formData)
+    const res = data?.id ? await updateUser(data?.id, formData) : await createUser(formData)
     if (!res.data) {
       setError(true)
       return
     }
 
     setSuccess(true)
+    router.refresh()
     setTimeout(() => {
       onClose()
     }, 1000)
@@ -33,7 +37,7 @@ const UserForm = ({ data, onClose }: IUserForm) => {
   return (
     <form onSubmit={handleSubmit}>
       {error && <Alert className='mb-4' type='error' message='Something went wrong, please check your data and try again' />}
-      {success && <Alert className='mb-4' type='success' message='User has been created successfully' />}
+      {success && <Alert className='mb-4' type='success' message={`User has been ${data?.id ? 'updated' : 'created'} successfully`} />}
       <FormControl
         label="Name"
         name="name"

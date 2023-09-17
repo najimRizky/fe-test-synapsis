@@ -1,5 +1,5 @@
 import apiPath from "@/config/apiPath"
-import { getRequest, postRequest } from "@/services"
+import { getRequest, patchRequest, postRequest } from "@/services"
 import { IGetUserList } from "./interface"
 
 export const getUserList = async ({ page = 1, query }: IGetUserList) => {
@@ -16,5 +16,10 @@ export const getUserById = async (id: number) => {
 
 export const createUser = async (data: any) => {
   const user = await postRequest({ url: `${apiPath.users}`, body: data })
+  return user
+}
+
+export const updateUser = async (id: number, data: any) => {
+  const user = await patchRequest({ url: `${apiPath.users}/${id}`, body: data })
   return user
 }
