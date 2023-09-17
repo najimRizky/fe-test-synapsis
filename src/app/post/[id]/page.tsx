@@ -1,4 +1,5 @@
 import SectionTitle from "@/components/modules/SectionTitle"
+import EditPost from "@/components/pages/post/EditPost"
 import PostCommens from "@/components/pages/post/PostComments"
 import { getPostById } from "@/providers/post"
 import { Metadata, ResolvingMetadata } from "next"
@@ -33,7 +34,10 @@ const PostDetailPage = async ({ params }: IPostDetailPage) => {
 
   return (
     <div className="container">
-      <h1 className="text-4xl font-bold">{data?.title}</h1>
+      <div className="flex justify-between">
+        <h1 className="text-3xl font-bold">{data?.title}</h1>
+        <EditPost data={data} />
+      </div>
       <p className="mt-4 text-gray-500">
         <span className="font-bold">Author:</span> {data?.user ? (
           <Link
