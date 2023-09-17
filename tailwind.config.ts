@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-import colors from 'tailwindcss/colors' 
+import colors from 'tailwindcss/colors'
 
 const config: Config = {
   content: [
@@ -25,7 +25,15 @@ const config: Config = {
         "fade-out": {
           "frome": { opacity: "1" },
           "to": { opacity: "0" },
-        }
+        },
+        "slide-in": {
+          "from": { transform: "translateX(100%)" },
+          "to": { transform: "translateX(0)" },
+        },
+        "slide-out": {
+          "from": { transform: "translateX(0)" },
+          "to": { transform: "translateX(100%)" },
+        },
       }
     },
     container: {
