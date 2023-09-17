@@ -2,6 +2,7 @@ import React from 'react'
 import IFormControl from './interface'
 import Input from '@/components/base/Input'
 import Select from '@/components/base/Select'
+import Textarea from '@/components/base/Textarea'
 
 const FormControl = (props: IFormControl) => {
   const {
@@ -39,16 +40,16 @@ const FormControl = (props: IFormControl) => {
         />
       )}
       {component === 'textarea' && (
-        <textarea
+        <Textarea
           name={name}
           id={name}
           value={value}
           disabled={disabled}
-          className={`
-            mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md
-          `}
-          placeholder={label}
+          placeholder={placeholder}
           rows={rows}
+          onChange={onChange}
+          required={required}
+          {...additionalOptions}
         />
       )}
       {component === 'select' && (
@@ -63,25 +64,6 @@ const FormControl = (props: IFormControl) => {
           required={required}
           {...additionalOptions}
         />
-          
-        // <select
-        //   onChange={onChange}
-        //   name={name}
-        //   id={name}
-        //   value={value}
-        //   disabled={disabled}
-        //   className={`
-        //     mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md
-        //     ${error ? 'border-red-500' : ''}
-        //   `}
-        // >
-        //   {placeholder && (
-        //     <option value="" disabled>{placeholder}</option>
-        //   )}
-        //   {options?.map((option, index) => (
-        //     <option key={index} value={option.value}>{option.label}</option>
-        //   ))}
-        // </select>
       )}
       {error && (
         <p className="mt-2 text-sm text-red-500">{error}</p>

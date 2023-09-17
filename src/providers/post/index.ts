@@ -1,6 +1,6 @@
 import apiPath from "@/config/apiPath"
 import IPost from "@/interfaces/post";
-import { getRequest } from "@/services"
+import { getRequest, patchRequest, postRequest } from "@/services"
 import { getUserById } from "../user";
 import IUser from "@/interfaces/user";
 import { IGetPostList } from "./interface";
@@ -53,4 +53,12 @@ export const getPostById = async (id: number) => {
 
 export const getCommentsByPostId = async (id: number, page: number = 1) => {
   return await getRequest({ url: `${apiPath.posts}/${id}/comments?page=${page}`, serverSide: false })
+}
+
+export const createPost = async (userId: number = 0, data: any) => {
+  return await postRequest({ url: `${apiPath.users}/${userId}/posts`, body: data })
+}
+
+export const updatePost = async (id: number, data: any) => {
+  return await patchRequest({ url: `${apiPath.posts}/${id}`, body: data })
 }

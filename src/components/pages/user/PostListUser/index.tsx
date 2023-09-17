@@ -7,13 +7,16 @@ import { getPostListByUserId } from "@/providers/post"
 import PostList from "@/components/modules/PostList"
 import Pagination from "@/components/modules/Pagination"
 import Spinner from "@/components/modules/Spinner"
+import { useSearchParams } from "next/navigation"
 
 
 const PostListUser = ({ user }: IPostListUser) => {
   const [page, setPage] = useState(1)
   const [posts, setPosts] = useState<{ data: any, metadata: any }>()
   const [loading, setLoading] = useState(true)
-
+  const searchParams = useSearchParams()
+  const reget = searchParams.get("reget")
+  
   const getPosts = async () => {
     setLoading(true)
     const res = await getPostListByUserId(user?.id, page)
@@ -28,10 +31,11 @@ const PostListUser = ({ user }: IPostListUser) => {
     setPosts(data)
   }
 
+
   useEffect(() => {
     getPosts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page])
+  }, [page, reget])
 
   return (
     <div className="mt-8">

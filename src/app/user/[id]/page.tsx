@@ -1,3 +1,4 @@
+import AddPost from "@/components/pages/user/AddPost"
 import DeleteUser from "@/components/pages/user/DeleteUser"
 import EditUser from "@/components/pages/user/EditUser"
 import PostListUser from "@/components/pages/user/PostListUser"
@@ -38,6 +39,7 @@ const UserDetailPage = async ({ params }: IUserDetailPage) => {
         <div className="flex gap-2">
           <EditUser user={data} />
           <DeleteUser id={id} />
+          <AddPost userId={id} />
         </div>
       </div>
 
