@@ -14,11 +14,11 @@ const Footer = () => {
             </div>
           </div>
           <p className="text-sm">
-            This project is solely intended for testing purposes. Its primary objective is to assess various aspects of functionality, performance, and compatibility. The project does not have any real-world application or commercial use. Instead, it serves as a controlled environment for experimentation and validation of concepts, software, or hardware components. Test data and scenarios are meticulously designed to help identify potential issues, refine algorithms, and optimize systems. Any results or findings generated from this project should not be interpreted as indicative of practical utility, as its sole purpose is to facilitate experimentation and testing in a controlled setting.
+            This project is designed solely for testing, focusing on functionality, performance, and compatibility. It lacks real-world applications or commercial use, serving as a controlled environment for experimentation and validation of concepts, software, or hardware. Test data and scenarios aim to identify issues, refine algorithms, and optimize systems. Any results should not be seen as practical utility, as the project sole purpose is controlled experimentation and testing.
           </p>
         </div>
       </div>
-      <p className="text-xs border-t py-2 mt-6">
+      <p className="text-sm border-t py-4 mt-6">
         © 2023 - Developed by <Link
           href="https://najim-rizky.com"
           target="_blank"
