@@ -4,33 +4,33 @@ import { useEffect, useState } from 'react'
 import IModal from './interface'
 import CloseIcon from '@/components/icons/CloseIcon'
 
-const Modal = ({ children, size = "md", onClose, isOpen, title }: IModal) => {
-  const [open, setOpen] = useState(isOpen)
+const Modal = ({ children, size = "md", onClose, isOpen: preIsOpen, title }: IModal) => {
+  const [isOpen, setIsOpen] = useState(preIsOpen)
 
   useEffect(() => {
-    if (isOpen) {
-      setOpen(isOpen)
+    if (preIsOpen) {
+      setIsOpen(preIsOpen)
       document.body.style.overflow = 'hidden'
       return
     } else {
       setTimeout(() => {
-        setOpen(isOpen)
+        setIsOpen(preIsOpen)
       }, 300)
       document.body.style.overflow = 'unset'
       return
     }
-  }, [isOpen])
+  }, [preIsOpen])
 
-  if (!open) return null
+  if (!isOpen) return null
   return (
     <div
       style={{
         animationFillMode: 'forwards',
-      }} 
+      }}
       className={`
         duration-300 fixed z-50 inset-0 overflow-y-auto
-        ${isOpen ? 'animate-[fade-in_0.3s]' : 'animate-[fade-out_0.3s]'}
-        ${open ? 'opacity-100' : 'opacity-0'}
+        ${preIsOpen ? 'animate-[fade-in_0.3s]' : 'animate-[fade-out_0.3s]'}
+        ${isOpen ? 'opacity-100' : 'opacity-0'}
       `}
     >
       <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
