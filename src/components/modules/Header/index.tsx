@@ -9,7 +9,7 @@ import { useState } from "react"
 
 const Header = () => {
   const pathName = usePathname()
-  const [isMenuOpen, setIsMenuOpen] = useState(true)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = (state: boolean = !isMenuOpen) => {
     setIsMenuOpen(state)
