@@ -1,8 +1,10 @@
 # Frontend Engineer Challenge - Synapsis.id
 ## Tech Stack
-- Next.js
-- Tailwind CSS
-- Typescript
+- Next.js v13.4.19
+- Tailwind CSS v3.3.3
+- Typescript v5.2.2
+- Node.js v18.17.1
+- NPM v9.6.7
 
 ## Features
 - [x] Home page
