@@ -1,4 +1,5 @@
 import SectionTitle from "@/components/modules/SectionTitle"
+import DeletePost from "@/components/pages/post/DeletePost"
 import EditPost from "@/components/pages/post/EditPost"
 import PostCommens from "@/components/pages/post/PostComments"
 import { getPostById } from "@/providers/post"
@@ -36,7 +37,10 @@ const PostDetailPage = async ({ params }: IPostDetailPage) => {
     <div className="container">
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold">{data?.title}</h1>
-        <EditPost data={data} />
+        <div className="flex gap-x-2">
+          <EditPost data={data} />
+          <DeletePost id={id} />
+        </div>
       </div>
       <p className="mt-4 text-gray-500">
         <span className="font-bold">Author:</span> {data?.user ? (

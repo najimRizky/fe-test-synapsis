@@ -1,6 +1,6 @@
 import apiPath from "@/config/apiPath"
 import IPost from "@/interfaces/post";
-import { getRequest, patchRequest, postRequest } from "@/services"
+import { deleteRequest, getRequest, patchRequest, postRequest } from "@/services"
 import { getUserById } from "../user";
 import IUser from "@/interfaces/user";
 import { IGetPostList } from "./interface";
@@ -61,4 +61,8 @@ export const createPost = async (userId: number = 0, data: any) => {
 
 export const updatePost = async (id: number, data: any) => {
   return await patchRequest({ url: `${apiPath.posts}/${id}`, body: data })
+}
+
+export const deletePost = async (id: number) => {
+  return await deleteRequest({ url: `${apiPath.posts}/${id}` })
 }
