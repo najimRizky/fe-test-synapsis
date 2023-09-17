@@ -4,7 +4,7 @@ import IPostCard from "./interface"
 const PostCard = ({ post }: IPostCard) => {
   return (
     <div
-      className="pb-4 mb-4 border-b border-slate-300 hover:translate-x-1 duration-300 hover:-translate-y-1 hover:border-slate-600 grid gap-y-2"
+      className="pb-4 mb-4 rounded p-4 duration-300 grid gap-y-2 border-2 hover:shadow-md"
     >
       <Link href={`/post/${post.id}`}>
         <h2 className="text-lg font-bold line-clamp-2">{post.title}</h2>
