@@ -24,7 +24,7 @@ const DeleteUser = ({ id }: { id: number }) => {
       setTimeout(() => {
         closeModal()
         router.push("/user")
-      }, 2000)
+      }, 1500)
     }
     setIsLoading(false)
   }

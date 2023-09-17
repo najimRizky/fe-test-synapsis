@@ -34,7 +34,7 @@ const UserForm = ({ data, onClose }: IUserForm) => {
     router.refresh()
     setTimeout(() => {
       onClose()
-    }, 2000)
+    }, 1500)
   }
 
   return (

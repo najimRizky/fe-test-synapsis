@@ -53,7 +53,7 @@ const PostForm = ({ data, onClose, userId, reloadMethod }: IPostForm) => {
     setTimeout(() => {
       reload()
       onClose()
-    }, 2000)
+    }, 1500)
   }
 
   return (
