@@ -4,6 +4,7 @@ interface IModalDelete {
   message: string;
   isOpen: boolean;
   isSuccess?: boolean;
+  isLoading?: boolean;
 }
 
 export default IModalDelete

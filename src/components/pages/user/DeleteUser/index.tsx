@@ -11,8 +11,10 @@ const DeleteUser = ({ id }: { id: number }) => {
   const { isOpen, closeModal, openModal } = useModal()
   const router = useRouter()
   const [isSuccess, setIsSuccess] = useState<boolean>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleDelete = async () => {
+    setIsLoading(true)
     const res = await deleteUser(id)
     if (res.error) {
       console.log(res.error)
@@ -24,6 +26,13 @@ const DeleteUser = ({ id }: { id: number }) => {
         router.push("/user")
       }, 2000)
     }
+    setIsLoading(false)
+  }
+
+  const handleClose = () => {
+    closeModal()
+    setIsSuccess(undefined)
+    setIsLoading(false)
   }
 
   return (
@@ -38,8 +47,9 @@ const DeleteUser = ({ id }: { id: number }) => {
         isOpen={isOpen}
         message="Are you sure you want to delete this data?"
         onConfirm={handleDelete}
-        onClose={closeModal}
+        onClose={handleClose}
         isSuccess={isSuccess}
+        isLoading={isLoading}
       />
     </>
   )
