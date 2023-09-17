@@ -16,6 +16,16 @@ const config: Config = {
       textColor: {
         "body-bg": "#f5f5f5",
         "body-text": colors.slate[600],
+      },
+      keyframes: {
+        "fade-in": {
+          "from": { opacity: "0" },
+          "to": { opacity: "1" },
+        },
+        "fade-out": {
+          "frome": { opacity: "1" },
+          "to": { opacity: "0" },
+        }
       }
     },
     container: {
