@@ -34,7 +34,7 @@ const PostDetailPage = async ({ params }: IPostDetailPage) => {
 
   return (
     <div className="container">
-      <div className="flex justify-between gap-x-8">
+      <div className="flex flex-col md:flex-row justify-between gap-4">
         <h1 className="text-3xl font-bold">{data?.title}</h1>
         <div className="flex gap-x-2 flex-shrink-0">
           <EditPost data={data} />
