@@ -37,7 +37,7 @@ const Header = () => {
             ))}
           </div>
           <div>
-            Search
+            About
           </div>
         </div>
       </div>
