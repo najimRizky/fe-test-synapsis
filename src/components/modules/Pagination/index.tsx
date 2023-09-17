@@ -41,7 +41,7 @@ const Pagination = ({ maxPage, page, totalElement = 0, customHandler }: IPaginat
   }
 
   return (
-    <div className="flex justify-between mt-4 items-center flex-wrap gap-4">
+    <div className="flex flex-col md:flex-row justify-between mt-4 gap-4">
       <div className="text-gray-600">
         Showing <b>{thousandSeparator(showStart)}</b> to <b>{thousandSeparator(showEnd)}</b>  of <b>{thousandSeparator(totalElement)}</b> data
       </div>
