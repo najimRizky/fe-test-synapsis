@@ -2,7 +2,7 @@ import ICommentCard from "./interface"
 
 const CommentCard = ({ comment, onEdit, onDelete }: ICommentCard) => {
   return (
-    <div className="flex p-4 border-2 rounded-md justify-between">
+    <div className="flex flex-col sm:flex-row p-4 border-2 rounded-md justify-between gap-4">
       <div>
         <h4 className="font-bold text-lg">{comment.name}</h4>
         <p className="text-gray-500 text-sm underline">{comment.email}</p>
