@@ -1,4 +1,3 @@
-import SectionTitle from "@/components/modules/SectionTitle"
 import DeletePost from "@/components/pages/post/DeletePost"
 import EditPost from "@/components/pages/post/EditPost"
 import PostCommens from "@/components/pages/post/PostComments"
@@ -35,9 +34,9 @@ const PostDetailPage = async ({ params }: IPostDetailPage) => {
 
   return (
     <div className="container">
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-x-8">
         <h1 className="text-3xl font-bold">{data?.title}</h1>
-        <div className="flex gap-x-2">
+        <div className="flex gap-x-2 flex-shrink-0">
           <EditPost data={data} />
           <DeletePost id={id} />
         </div>
@@ -55,10 +54,6 @@ const PostDetailPage = async ({ params }: IPostDetailPage) => {
         )}
       </p>
       <p className="mt-4 text-gray-500 mb-8">{data?.body}</p>
-      <SectionTitle
-        title="Comments"
-        size="small"
-      />
       <PostCommens id={id} />
     </div>
   )
