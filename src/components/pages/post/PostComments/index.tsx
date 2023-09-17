@@ -20,7 +20,6 @@ const PostComments = ({ id }: IComments) => {
 
   const [page, setPage] = useState(1)
   const [comments, setComments] = useState<{ data: any, metadata: any }>()
-  const [get, setGet] = useState(true)
   const [loading, setLoading] = useState(true)
 
   const [selectedData, setSelectedData] = useState<IComment>()
@@ -29,23 +28,22 @@ const PostComments = ({ id }: IComments) => {
   const [selectedDataDelete, setSelectedDataDelete] = useState<number>(0)
   const [successDelete, setSuccessDelete] = useState<boolean>()
 
-  const getComments = async () => {
+  const getComments = async (page = 1) => {
     setLoading(true)
 
-    const res = await getCommentsByPostId(id)
+    const res = await getCommentsByPostId(id, page)
 
     if (res.data) {
       setComments(res)
     }
 
     setLoading(false)
-    setGet(false)
   }
 
   useEffect(() => {
-    if (get) getComments()
+    getComments()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [get])
+  }, [])
 
   const handleDelete = (id: number) => {
     openModalDelete()
@@ -81,11 +79,16 @@ const PostComments = ({ id }: IComments) => {
   }
 
   const onSubmitSuccess = () => {
-    setGet(true)
+    getComments(1)
     setPage(1)
     setSelectedData(undefined)
     setSuccessDelete(undefined)
     setSelectedDataDelete(0)
+  }
+
+  const handlePageChange = (page: number) => {
+    setPage(page)
+    getComments(page)
   }
 
   return (
@@ -119,8 +122,8 @@ const PostComments = ({ id }: IComments) => {
               maxPage={comments?.metadata?.maxPage}
               totalElement={comments?.metadata?.totalElement}
               customHandler={{
-                next: () => setPage(page + 1),
-                previous: () => setPage(page - 1)
+                next: () => handlePageChange(page + 1),
+                previous: () => handlePageChange(page - 1),
               }}
             />
           </div>
