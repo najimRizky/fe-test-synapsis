@@ -2,21 +2,14 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
  
 export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
+  const requestHeaders = new Headers(req.headers)
+  requestHeaders.set('Authorization', `Bearer ${process.env.API_KEY}`)
 
-  if (pathname.startsWith('/api')) {
-    const API_KEY = process.env.API_KEY
-    const response = NextResponse.next()
-    
-    response.headers.set(
-      "Authorization", 
-      `Bearer ${API_KEY}`
-    )
-
-    return response
-  }
-
-  return NextResponse.next()
+  return NextResponse.rewrite(req.nextUrl, {
+    request: {
+      headers: requestHeaders,
+    },
+  });
 }
  
 export const config = {
