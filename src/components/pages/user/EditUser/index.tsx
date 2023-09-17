@@ -17,7 +17,7 @@ const EditUser = ({user}: IEditUser) => {
         Edit User
       </Button>
 
-      <Modal isOpen={isOpen} onClose={closeModal} title="Add User" >
+      <Modal isOpen={isOpen} onClose={closeModal} title="Edit User" >
         <UserForm onClose={closeModal} data={user} />
       </Modal>
     </>
