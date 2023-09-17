@@ -1,6 +1,6 @@
 import ICommentCard from "./interface"
 
-const CommentCard = ({ comment }: ICommentCard) => {
+const CommentCard = ({ comment, onEdit, onDelete }: ICommentCard) => {
   return (
     <div className="flex p-4 border-2 rounded-md justify-between">
       <div>
@@ -9,8 +9,8 @@ const CommentCard = ({ comment }: ICommentCard) => {
         <p className="text-gray-500 mt-4">{comment.body}</p>
       </div>
       <div className="flex flex-shrink-0 gap-x-4">
-        <p>Edit</p>
-        <p>Delete</p>
+        <p className="hover:underline cursor-pointer" onClick={() => onEdit(comment)}>Edit</p>
+        <p className="hover:underline cursor-pointer" onClick={() => onDelete(comment.id)}>Delete</p>
       </div>
     </div>
   )

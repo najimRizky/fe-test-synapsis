@@ -66,3 +66,15 @@ export const updatePost = async (id: number, data: any) => {
 export const deletePost = async (id: number) => {
   return await deleteRequest({ url: `${apiPath.posts}/${id}` })
 }
+
+export const createComment = async (postId: number, data: any) => {
+  return await postRequest({ url: `${apiPath.posts}/${postId}/comments`, body: data })
+}
+
+export const updateComment = async (id: number, data: any) => {
+  return await patchRequest({ url: `${apiPath.comments}/${id}`, body: data })
+}
+
+export const deleteComment = async (id: number) => {
+  return await deleteRequest({ url: `${apiPath.comments}/${id}` })
+}
