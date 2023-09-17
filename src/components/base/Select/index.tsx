@@ -10,6 +10,7 @@ const Select = (props: ISelect) => {
     id,
     options,
     placeholder,
+    disabled
   } = props
 
   return (
@@ -18,6 +19,7 @@ const Select = (props: ISelect) => {
         {...name && { name }}
         {...required && { required }}
         {...id && { id }}
+        {...disabled && { disabled }}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
@@ -25,6 +27,7 @@ const Select = (props: ISelect) => {
           m-0
           w-full h-10 rounded border-2 border-gray-300 focus:outline-none focus:border-blue-500  duration-300 outline-none
           px-3
+          disabled:bg-gray-100
         `}
       >
         {placeholder && (

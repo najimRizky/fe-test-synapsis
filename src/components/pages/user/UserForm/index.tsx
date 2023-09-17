@@ -12,6 +12,7 @@ const UserForm = ({ data, onClose }: IUserForm) => {
   const [formData, setFormData] = useState({ ...data })
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -20,10 +21,12 @@ const UserForm = ({ data, onClose }: IUserForm) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setLoading(true)
 
     const res = data?.id ? await updateUser(data?.id, formData) : await createUser(formData)
     if (!res.data) {
       setError(true)
+      setLoading(false)
       return
     }
 
@@ -31,7 +34,7 @@ const UserForm = ({ data, onClose }: IUserForm) => {
     router.refresh()
     setTimeout(() => {
       onClose()
-    }, 1000)
+    }, 2000)
   }
 
   return (
@@ -45,14 +48,17 @@ const UserForm = ({ data, onClose }: IUserForm) => {
         value={formData.name || ""}
         placeholder="Enter your name"
         onChange={handleChange}
+        disabled={loading}
       />
       <FormControl
         label="Email"
         name="email"
+        type='email'
         required={true}
         value={formData.email || ""}
         placeholder="Enter your Email"
         onChange={handleChange}
+        disabled={loading}
       />
       <FormControl
         label='Gender'
@@ -66,6 +72,7 @@ const UserForm = ({ data, onClose }: IUserForm) => {
           { label: "Female", value: "female" }
         ]}
         placeholder="Select your gender"
+        disabled={loading}
       />
       <FormControl
         label='Status'
@@ -79,13 +86,14 @@ const UserForm = ({ data, onClose }: IUserForm) => {
           { label: "Inactive", value: "inactive" }
         ]}
         placeholder="Select your status"
+        disabled={loading}
       />
 
       <div className="flex justify-end gap-x-2">
-        <Button type='button' onClick={onClose}>
+        <Button disabled={loading} type='button' onClick={onClose}>
           Cancel
         </Button>
-        <Button type="submit">
+        <Button disabled={loading} type="submit">
           Submit
         </Button>
       </div>

@@ -13,6 +13,7 @@ const Input = (props: IInput) => {
     onChange,
     required,
     id,
+    disabled,
   } = props
   return (
     <div className={`relative ${className}`}>
@@ -25,6 +26,7 @@ const Input = (props: IInput) => {
         {...name && { name }}
         {...required && { required }}
         {...id && { id }}
+        {...disabled && { disabled }}
         type={type}
         value={value}
         onChange={onChange}
