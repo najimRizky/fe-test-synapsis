@@ -45,14 +45,14 @@ const SearchInput = ({placeholder}: ISearchInput) => {
     <>
       <Input
         placeholder={placeholder}
-        className="mt-4 mb-8"
+        className="mt-4 mb-4"
         value={search}
         onChange={handleChange}
         icon={<SearchIcon width={22} />}
         iconPosition="right"
       />
       {query && (
-        <div className="text-center text-3xl text-gray-600 mt-0">
+        <div className="mb-8 sm:text-center text-xl sm:text-3xl text-gray-600 mt-0">
           Showing results for <b>{query}</b>
         </div>
       )}
