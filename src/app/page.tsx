@@ -6,6 +6,17 @@ import UserListHorizontalScroll from "@/components/pages/home/UserListHorizontal
 import { getUserList } from "@/providers/user"
 import Link from "next/link"
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'S-BLOG',
+  description: 'S-BLOG is a blog project that is built with Next.js, Tailwind CSS, and TypeScript.',
+  publisher: 'synapsis.id',
+  authors: [
+    { name: 'Najim Rizky' },
+  ]
+}
+
 
 const HomePage = async () => {
   const posts = await getPostList()

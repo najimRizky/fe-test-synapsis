@@ -6,7 +6,17 @@ import UserCard from '@/components/modules/UserCard';
 import AddUser from '@/components/pages/user/AddUser';
 import IUser from '@/interfaces/user';
 import { getUserList } from '@/providers/user'
+import { Metadata } from 'next';
 import React from 'react'
+
+export const metadata: Metadata = {
+  title: 'S-BLOG | USERS',
+  description: 'S-BLOG is a blog project that is built with Next.js, Tailwind CSS, and TypeScript.',
+  publisher: 'synapsis.id',
+  authors: [
+    { name: 'Najim Rizky' },
+  ]
+}
 
 interface IUserPage {
   searchParams: { [key: string]: string };

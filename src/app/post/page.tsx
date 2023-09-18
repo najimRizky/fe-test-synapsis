@@ -4,6 +4,16 @@ import PostList from "@/components/modules/PostList";
 import SearchInput from "@/components/modules/SearchInput";
 import SectionTitle from "@/components/modules/SectionTitle";
 import { getPostList } from "@/providers/post"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'S-BLOG | POSTS',
+  description: 'S-BLOG is a blog project that is built with Next.js, Tailwind CSS, and TypeScript.',
+  publisher: 'synapsis.id',
+  authors: [
+    { name: 'Najim Rizky' },
+  ]
+}
 
 interface IPostPage {
   searchParams: { [key: string]: string };
