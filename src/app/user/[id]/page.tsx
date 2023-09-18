@@ -34,9 +34,9 @@ const UserDetailPage = async ({ params }: IUserDetailPage) => {
 
   return (
     <div className="container">
-      <div className="flex flex-col sm:flex-row justify-between gap-4">
+      <div className="flex flex-col md:flex-row justify-between gap-4 ">
         <UserDetail user={data} />
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-shrink-0 flex-wrap">
           <EditUser user={data} />
           <DeleteUser id={id} />
           <AddPost userId={id} />
