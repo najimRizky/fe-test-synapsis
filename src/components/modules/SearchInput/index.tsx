@@ -5,14 +5,16 @@ import SearchIcon from "@/components/icons/SearchIcon"
 import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import ISearchInput from "./interface"
+import Spinner from "../Spinner"
 
-const SearchInput = ({placeholder}: ISearchInput) => {
+const SearchInput = ({ placeholder }: ISearchInput) => {
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
   const query = searchParams.get("q") || ""
 
   const [search, setSearch] = useState(query)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -24,8 +26,16 @@ const SearchInput = ({placeholder}: ISearchInput) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
 
+  useEffect(() => {
+    if (loading) {
+      setLoading(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
+    setLoading(true)
   }
 
   const handleSearch = (searchQuery: string) => {
@@ -48,7 +58,7 @@ const SearchInput = ({placeholder}: ISearchInput) => {
         className="mt-4 mb-4"
         value={search}
         onChange={handleChange}
-        icon={<SearchIcon width={22} />}
+        icon={loading ? <Spinner size={20} /> : <SearchIcon width={22} />}
         iconPosition="right"
       />
       {query && (
